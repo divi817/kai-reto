@@ -6,5 +6,5 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface PricesMapper {
-    PriceByProductAndBrandResponse pricesEntityToPriceByProductAndBrandResponse(Price price);
+    PriceByProductAndBrandResponse pricesEntityToPriceByProductAndBrandResponse(Price prices);
 }

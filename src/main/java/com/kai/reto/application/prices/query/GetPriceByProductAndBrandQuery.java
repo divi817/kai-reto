@@ -12,10 +12,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class GetPriceByProductAndBrandQuery extends Query {
-    @NonNull
     private int productId;
-    @NonNull
     private int brandId;
-    @NonNull
-    private LocalDateTime startDate;
+    private String startDate;
 }

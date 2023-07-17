@@ -26,7 +26,7 @@ public class PricesController {
 
     private final PricesMapper pricesMapper;
 
-    @GetMapping("")
+    @GetMapping()
     public ResponseEntity<PriceByProductAndBrandResponse> getPriceByBrandAndProduct(
             @RequestParam LocalDateTime date,
             @RequestParam(name = "product_id") int productId,
