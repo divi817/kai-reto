@@ -7,6 +7,7 @@ import com.kai.reto.infrastructure.dto.prices.PriceByProductAndBrandResponse;
 import com.kai.reto.infrastructure.dto.prices.mappers.PricesMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +29,7 @@ public class PricesController {
 
     @GetMapping()
     public ResponseEntity<PriceByProductAndBrandResponse> getPriceByBrandAndProduct(
-            @RequestParam LocalDateTime date,
+            @RequestParam(name = "date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime date,
             @RequestParam(name = "product_id") int productId,
             @RequestParam(name = "brand_id") int brandId
     ) {
