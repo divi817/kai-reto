@@ -4,15 +4,16 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Optional;
+
 
 @Repository
 public interface PriceRepository extends CrudRepository<PriceEntity, Long> {
     @Query(value = "SELECT * FROM prices " +
             "WHERE brand_id = :brandId " +
             "AND product_id = :productId " +
-            "AND :date BETWEEN start_date AND end_date " +
-            "ORDER BY priority DESC " +
-            "LIMIT 1",
+            "AND :date BETWEEN start_date AND end_date ",
             nativeQuery = true)
-    PriceEntity getPriceByProductAndBrand(String date, int productId, int brandId);
+    Optional<List<PriceEntity>> getPriceByProductAndBrand(String date, int productId, int brandId);
 }
