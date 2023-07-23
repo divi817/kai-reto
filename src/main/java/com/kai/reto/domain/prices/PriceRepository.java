@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface PriceRepository extends CrudRepository<Price, Long> {
+public interface PriceRepository extends CrudRepository<PriceEntity, Long> {
     @Query(value = "SELECT * FROM prices " +
             "WHERE brand_id = :brandId " +
             "AND product_id = :productId " +
@@ -14,5 +14,5 @@ public interface PriceRepository extends CrudRepository<Price, Long> {
             "ORDER BY priority DESC " +
             "LIMIT 1",
             nativeQuery = true)
-    Price getPriceByProductAndBrand(String date, int productId, int brandId);
+    PriceEntity getPriceByProductAndBrand(String date, int productId, int brandId);
 }

@@ -6,13 +6,16 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-
-@Builder
+@Entity
+@Table(name = "prices")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class Price extends AggregateRoot {
+public class PriceEntity extends Price {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private int brandId;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
