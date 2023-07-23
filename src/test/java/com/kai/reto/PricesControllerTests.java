@@ -31,6 +31,13 @@ public class PricesControllerTests {
     }
 
     @Test
+    void should_get_date_format_error() throws Exception {
+
+        mockMvc.perform(get("/prices?brand_id=1&date=02-11-22&product_id=35455"))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
     void should_get_correct_price_information_case_1() throws Exception {
         PriceByProductAndBrandResponse expected_response = PriceByProductAndBrandResponse.builder()
                 .brandId(1)

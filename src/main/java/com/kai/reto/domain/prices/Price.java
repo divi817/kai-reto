@@ -12,7 +12,12 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 @Setter
+@Entity
+@Table(name = "prices")
 public class Price extends AggregateRoot {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private int brandId;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
