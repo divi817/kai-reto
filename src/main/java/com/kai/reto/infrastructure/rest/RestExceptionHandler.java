@@ -2,7 +2,6 @@ package com.kai.reto.infrastructure.rest;
 
 import com.kai.common.infrastructure.exceptions.ApplicationException;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.convert.ConversionFailedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;

@@ -1,7 +1,7 @@
 package com.kai.reto.application.prices;
 
-import com.kai.reto.application.prices.query.GetPriceByProductAndBrandQuery;
 import com.kai.common.infrastructure.exceptions.ApplicationException;
+import com.kai.reto.application.prices.query.GetPriceByProductAndBrandQuery;
 import com.kai.reto.domain.prices.Price;
 import com.kai.reto.domain.prices.PricesService;
 import lombok.RequiredArgsConstructor;
