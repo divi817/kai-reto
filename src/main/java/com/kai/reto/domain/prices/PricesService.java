@@ -1,5 +1,6 @@
 package com.kai.reto.domain.prices;
 
+import com.kai.reto.domain.prices.mappers.PriceMapper;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -19,25 +20,27 @@ public class PricesService {
 
     private final PriceRepository priceRepository;
 
+    private final PriceMapper priceMapper;
+
     private static final DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
 
     public Price getPriceByProductAndBrand(LocalDateTime date, int productId, int brandId) {
         String formatted_date = date.format(dateFormat);
-        Optional<List<Price>> prices = priceRepository.getPriceByProductAndBrand(formatted_date, productId, brandId);
+        Optional<List<PriceEntity>> prices = priceRepository.getPriceByProductAndBrand(formatted_date, productId, brandId);
         if (prices.isPresent()) {
-            Optional<Price> price = getMaxPriorityPrice(prices.get());
+            Optional<PriceEntity> price = getMaxPriorityPrice(prices.get());
             if (price.isPresent()) {
-                return price.get();
+                return priceMapper.priceEntityToPrice(price.get());
             }
         }
         return null;
     }
 
-    public Optional<Price> getMaxPriorityPrice(List<Price> prices) {
+    public Optional<PriceEntity> getMaxPriorityPrice(List<PriceEntity> prices) {
         return prices
                 .stream()
-                .max(Comparator.comparing(Price::getPriority));
+                .max(Comparator.comparing(PriceEntity::getPriority));
     }
 
 }

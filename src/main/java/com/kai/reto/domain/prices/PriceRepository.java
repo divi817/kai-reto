@@ -9,11 +9,11 @@ import java.util.Optional;
 
 
 @Repository
-public interface PriceRepository extends CrudRepository<Price, Long> {
+public interface PriceRepository extends CrudRepository<PriceEntity, Long> {
     @Query(value = "SELECT * FROM prices " +
             "WHERE brand_id = :brandId " +
             "AND product_id = :productId " +
             "AND :date BETWEEN start_date AND end_date ",
             nativeQuery = true)
-    Optional<List<Price>> getPriceByProductAndBrand(String date, int productId, int brandId);
+    Optional<List<PriceEntity>> getPriceByProductAndBrand(String date, int productId, int brandId);
 }
